@@ -5,7 +5,8 @@ USER root
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y python3.6 vim tmux fish curl wget strace git gcc
 
-RUN git clone https://github.com/shapirolab/clineage.git
+RUN git clone https://github.com/SunmoonTao/clineage.git
+
 
 RUN wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2021.04-Linux-x86_64.sh
 RUN bash /tmp/Anaconda3-2021.04-Linux-x86_64.sh -b
@@ -30,7 +31,7 @@ RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip inst
 RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements-unpackaged.txt
 RUN tail -n +2 requirements-dev.txt > /tmp/a && mv /tmp/a requirements-dev.txt  # Remove redundent line
 RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements-dev.txt
-RUN yes | ~/miniconda3/envs/rosacl/bin/pip install fabric-py34.zip
+RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install fabric-py34.zip
 
 CMD /entrypoint.sh
 #CMD sleep infinity
