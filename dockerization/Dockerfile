@@ -25,11 +25,12 @@ RUN conda init bash \
 
 RUN echo "click==7.1.2" >> requirements-extra.txt  # click version 8 breaks us
 RUN echo "setuptools==57.5" >> requirements-extra.txt  # setuptools version 58 breaks us
-RUN . ~/.bashrc && conda activate py36 && pip install -r requirements-extra.txt
-RUN . ~/.bashrc && conda activate py36 && pip install -r requirements.txt
-RUN . ~/.bashrc && conda activate py36 && pip install -r requirements-unpackaged.txt
+RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements-extra.txt
+RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements.txt
+RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements-unpackaged.txt
 RUN tail -n +2 requirements-dev.txt > /tmp/a && mv /tmp/a requirements-dev.txt  # Remove redundent line
-RUN . ~/.bashrc && conda activate py36 && pip install -r requirements-dev.txt
+RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements-dev.txt
+RUN yes | ~/miniconda3/envs/rosacl/bin/pip install fabric-py34.zip
 
 CMD /entrypoint.sh
 #CMD sleep infinity
