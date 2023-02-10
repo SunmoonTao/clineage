@@ -32,6 +32,6 @@ RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip inst
 RUN tail -n +2 requirements-dev.txt > /tmp/a && mv /tmp/a requirements-dev.txt  # Remove redundent line
 RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install -r requirements-dev.txt
 RUN . ~/.bashrc && conda activate py36 && /root/anaconda3/envs/py36/bin/pip install fabric-py34.zip
-RUN chmod 775 /entrypoint.sh
+
 CMD /entrypoint.sh
 #CMD sleep infinity
